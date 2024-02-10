@@ -32,7 +32,7 @@ public static class Config
                 ClientName = "nextApp",
                 ClientSecrets = [new Secret("secret".Sha256())],
                 AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
-                RequirePkce = false,
+                RequirePkce = false, // used for mobile apps, mobile apps can't use CodeAndClientCredentials
                 RedirectUris = {"http://localhost:3000/api/auth/callback/id-server"},
                 AllowOfflineAccess = true, // used to config refresh token
                 AllowedScopes = {"openid", "profile", "auctionApp"},
