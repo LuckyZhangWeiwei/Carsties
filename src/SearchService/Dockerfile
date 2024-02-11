@@ -18,14 +18,14 @@ RUN dotnet restore Carsties.sln
 
 # copy the app folders over
 
-COPY src/AuctionService src/AuctionService
+COPY src/SearchService src/SearchService
 COPY src/Contracts src/Contracts
 
-WORKDIR /app/src/AuctionService
+WORKDIR /app/src/SearchService
 RUN dotnet publish -c Release -o /app/src/out
 
 #build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app/src/out .
-ENTRYPOINT [ "dotnet", "AuctionService.dll" ]
+ENTRYPOINT [ "dotnet", "SearchService.dll" ]
