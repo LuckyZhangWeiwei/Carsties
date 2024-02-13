@@ -1,0 +1,54 @@
+-------------------------------------------
+
+8-7 completed
+--------------------------------------
+dotnet new sln
+dotnet new webapi -o src/AuctionService
+dotnet sln add src/AuctionService
+dotnet watch
+dotnet tool list -g
+dotnet tool install dotnet-ef -g
+dotnet ef database drop
+dotnet ef database update
+dotnet ef migrations add "initcreate" -o Data/migrations
+docker compose up -d
+docker volume list
+docker volume rm carsties_mongodata
+---------------------------------------
+git init
+dotnet new gitignore
+git add .
+git commit -m "end of section 2"
+git remote add origin https://github.com/LuckyZhangWeiwei/Carsties.git
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy https://127.0.0.1:7890
+
+git push origin main
+-----------------------------------------
+dotnet new webapi -o src/SearchService
+dotnet sln add src/SearchService
+dotnet build
+-----------------------------------------
+http://localhost:15672/#/
+
+dotnet new classlib -o src/Contracts
+dotnet sln add src/Contracts
+dotnet add reference ../../src/Contracts
+
+------------------------------------
+dotnet new --install Duende.IdentityServer.Templates
+dotnet new isaspid -o /src/IdentityService
+dotnet sln add src/IdentityService
+
+dotnet ef migrations add "InitialCreate" -o Data/Migrations
+
+
+dotnet tool update dotnet-ef （升级tool）
+------------------------------------
+dotnet new web -o src/GatewayService
+
+docker build -f src/AuctionService/Dockerfile -t test123 .
+docker run test123
+docker compose build auction-svc
+docker compose build search-svc
+docker compose build identity-svc
