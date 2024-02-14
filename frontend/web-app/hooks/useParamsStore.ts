@@ -5,10 +5,13 @@ type State = {
   pageSize: number;
   pageCount: number;
   searchTerm: string;
+  searchValue: string;
 };
 
 type Actions = {
   setParams: (params: Partial<State>) => void;
+  reset: () => void;
+  setSearchValue: (value: string) => void;
 };
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   pageSize: 12,
   pageCount: 1,
   searchTerm: "",
+  searchValue: "",
 };
 
 export const useParamStore = create<State & Actions>()((set) => ({
@@ -30,4 +34,7 @@ export const useParamStore = create<State & Actions>()((set) => ({
     });
   },
   reset: () => set(initialState),
+  setSearchValue: (value: string) => {
+    set({ searchValue: value });
+  },
 }));
