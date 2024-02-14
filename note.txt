@@ -1,6 +1,6 @@
 -------------------------------------------
 
-8-7 completed
+8-15 completed
 --------------------------------------
 dotnet new sln
 dotnet new webapi -o src/AuctionService
@@ -52,3 +52,8 @@ docker run test123
 docker compose build auction-svc
 docker compose build search-svc
 docker compose build identity-svc
+--------------------------------------
+Ports are not available: listen tcp 0.0.0.0/50070: bind: An attempt was made to access a socket in a way forbidden by its access permissions
+
+net stop winnat
+net start winnat
