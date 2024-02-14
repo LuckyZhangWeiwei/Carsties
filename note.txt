@@ -1,6 +1,6 @@
 -------------------------------------------
 
-8-19 completed
+8 entire completed
 --------------------------------------
 dotnet new sln
 dotnet new webapi -o src/AuctionService
