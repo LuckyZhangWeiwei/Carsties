@@ -57,3 +57,6 @@ Ports are not available: listen tcp 0.0.0.0/50070: bind: An attempt was made to 
 
 net stop winnat
 net start winnat
+------------------------------------
+Win11端口被占用的解决方法
+https://www.59xt.com/article/2291.html

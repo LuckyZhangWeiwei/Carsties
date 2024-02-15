@@ -12,9 +12,7 @@ export const authOptions: NextAuthOptions = {
       clientId: "nextApp",
       clientSecret: "secret",
       issuer: "http://localhost:5000",
-      authorization: {
-        params: { scope: "openid profile auctionApp" },
-      },
+      authorization: { params: { scope: "openid profile auctionApp" } },
       idToken: true,
     }),
   ],
