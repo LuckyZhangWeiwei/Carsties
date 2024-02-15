@@ -28,6 +28,7 @@ git push origin main
 dotnet new webapi -o src/SearchService
 dotnet sln add src/SearchService
 dotnet build
+git log --oneline
 -----------------------------------------
 http://localhost:15672/#/
 
