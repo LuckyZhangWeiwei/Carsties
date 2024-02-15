@@ -1,9 +1,10 @@
 import Heading from "@/app/components/Heading";
-import { getSession } from "next-auth/react";
 import React from "react";
+import { getSession } from "../actions/authAction";
 
 export default async function Session() {
   const session = await getSession();
+  
   return (
     <div>
       <Heading title="Session dashboard" />
