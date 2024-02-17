@@ -1,4 +1,4 @@
-import { CookiesOptions, getServerSession } from "next-auth";
+import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { getToken } from "next-auth/jwt";
 import { cookies, headers } from "next/headers";
