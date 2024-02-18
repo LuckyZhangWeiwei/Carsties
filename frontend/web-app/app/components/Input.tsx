@@ -5,14 +5,14 @@ import { UseControllerProps, useController } from "react-hook-form";
 type Props = {
   label: string;
   type?: string;
-  showLabel: boolean;
+  showlabel?: boolean;
 } & UseControllerProps;
 
 export default function Input(props: Props) {
   const { fieldState, field } = useController({ ...props, defaultValue: "" });
   return (
     <div className="mb-3">
-      {props.showLabel && (
+      {props.showlabel && (
         <div className="mb-2 block">
           <Label htmlFor={field.name} value={props.label} />
         </div>
