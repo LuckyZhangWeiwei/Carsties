@@ -1,6 +1,6 @@
 -------------------------------------------
 
-10-12 03:16
+complete 10-13
 --------------------------------------
 dotnet new sln
 dotnet new webapi -o src/AuctionService
