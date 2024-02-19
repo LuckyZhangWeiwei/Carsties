@@ -48,7 +48,9 @@ public class AuctionsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid id)
     {
-        var auction = await _context.Auctions.Include(x => x.Item).FirstOrDefaultAsync();
+        var auction = await _context.Auctions
+            .Include(x => x.Item)
+            .FirstOrDefaultAsync(x => x.Id == id);
 
         if (auction == null)
             return NotFound();
@@ -105,6 +107,7 @@ public class AuctionsController : ControllerBase
 
         return BadRequest("problem saving changes");
     }
+
     [Authorize]
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteAuction(Guid id)
