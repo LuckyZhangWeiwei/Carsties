@@ -6,6 +6,7 @@ import CardImage from "../../CardImage";
 import DetailedSpecs from "./DetailsSpecs";
 import { getCurrentUser } from "@/app/actions/authAction";
 import EditButton from "./EditButton";
+import DeleteButton from "./BeleteButton";
 
 export default async function Details({ params }: { params: { id: string } }) {
   const data = await getDetailedViewData(params.id);
@@ -17,7 +18,10 @@ export default async function Details({ params }: { params: { id: string } }) {
         <div className="flex items-center gap-3">
           <Heading title={`${data.make} ${data.model}`} />
           {user?.username === data.seller ? (
-            <EditButton id={params.id} />
+            <>
+              <EditButton id={params.id} />
+              <DeleteButton id={params.id} />
+            </>
           ) : null}
         </div>
         <div className="flex gap-3">
