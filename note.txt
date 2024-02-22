@@ -1,6 +1,6 @@
 -------------------------------------------
 
-complete 10-13
+complete 11-07
 --------------------------------------
 dotnet new sln
 dotnet new webapi -o src/AuctionService
@@ -64,3 +64,5 @@ https://www.59xt.com/article/2291.html
 ---------------------------------------
 dotnet new webapi -o src/BiddingService
 dotnet sln add src/BiddingService
+--------------------------------------
+dotnet add reference ../../src/Contracts
