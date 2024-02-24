@@ -43,6 +43,8 @@ builder.Services
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddHostedService<CheckAuctionFinished>();
+
 var app = builder.Build();
 
 app.UseAuthentication();
