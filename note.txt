@@ -66,3 +66,5 @@ dotnet new webapi -o src/BiddingService
 dotnet sln add src/BiddingService
 --------------------------------------
 dotnet add reference ../../src/Contracts
+--------------------------------------
+git commit --amend  (修改已提交的comment)
