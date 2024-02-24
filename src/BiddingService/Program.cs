@@ -41,6 +41,8 @@ builder.Services
         opt.TokenValidationParameters.NameClaimType = "username";
     });
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 var app = builder.Build();
 
 app.UseAuthentication();
