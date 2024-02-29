@@ -74,3 +74,18 @@ dotnet sln add src/NotificationService
 dotnet add reference ../../src/Contracts
 dotnet build
 dotnet watch
+------------------------------------
+tailwind 自定义类
+global.css 中
+
+@layer components {
+  .input-custom {
+    @apply flex-grow pl-5 bg-transparent focus:outline-none border-transparent focus:border-transparent focus:ring-0;
+  }
+}
+
+js 数组中找最大值
+  const highBid = bids.reduce(
+    (pre, current) => (pre > current.amount ? pre : current.amount),
+    0
+  );
