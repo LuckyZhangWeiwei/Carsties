@@ -1,6 +1,6 @@
 -------------------------------------------
 
-complete 13-08
+complete 13-10
 --------------------------------------
 dotnet new sln
 dotnet new webapi -o src/AuctionService
