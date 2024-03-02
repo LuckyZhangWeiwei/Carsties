@@ -93,3 +93,5 @@ js 数组中找最大值
 ---------------------------------------
 .env.local 文件中，如果要是 use client 的组件要用 环境变量，则要加前缀 NEXT_PUBLIC
 NEXT_PUBLIC_NOTIFY_URL=http://localhost:6001/notifications
+
+nextjs 要npm run build 

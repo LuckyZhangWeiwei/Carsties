@@ -51,7 +51,7 @@ export default function Listings() {
       setLoading(false);
       setData(data);
     });
-  }, [url]);
+  }, [url, setData]);
 
   if (loading) return <h3>Loading...</h3>;
 

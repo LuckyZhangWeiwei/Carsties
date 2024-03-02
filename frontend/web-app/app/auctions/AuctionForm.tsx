@@ -37,7 +37,7 @@ export default function AuctionForm({ auction }: Props) {
     }
 
     setFocus("make");
-  }, [setFocus]);
+  }, [setFocus, auction, reset]);
 
   async function onSubmit(data: FieldValues) {
     try {
@@ -144,15 +144,18 @@ export default function AuctionForm({ auction }: Props) {
       )}
 
       <div className="flex justify-between">
-        <Button outline color="gray" children="Cancel" />
+        <Button outline color="gray">
+          Cancel
+        </Button>
         <Button
           outline
           color="success"
-          children="Submit"
           type="submit"
           isProcessing={isSubmitting}
           disabled={!isValid}
-        />
+        >
+          Submit
+        </Button>
       </div>
     </form>
   );
