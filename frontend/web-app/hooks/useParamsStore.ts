@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import { createWithEqualityFn } from "zustand/traditional";
 
 type State = {
   pageNumber: number;
@@ -30,7 +30,7 @@ const initialState: State = {
   winner: undefined,
 };
 
-export const useParamStore = create<State & Actions>()((set) => ({
+export const useParamStore = createWithEqualityFn<State & Actions>()((set) => ({
   ...initialState,
   setParams: (newParams: Partial<State>) => {
     set((state) => {
