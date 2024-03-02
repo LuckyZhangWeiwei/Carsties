@@ -27,7 +27,7 @@ export default function SignalRProvider({ children, user }: Props) {
 
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl("http://localhost:6001/notifications")
+      .withUrl(process.env.NEXT_PUBLIC_NOTIFY_URL!)
       .build();
 
     setConnection(newConnection);
