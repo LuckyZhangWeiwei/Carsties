@@ -2,8 +2,12 @@
 const nextConfig = {
   // experimental: { serverActions: true },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "cdn.pixabay.com" },{ protocol: "https", hostname: "upload.wikimedia.org" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "cdn.pixabay.com" },
+      { protocol: "https", hostname: "upload.wikimedia.org" },
+    ],
   },
+  output:"standalone"
 };
 
 export default nextConfig;
