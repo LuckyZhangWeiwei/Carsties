@@ -61,6 +61,8 @@ net start winnat
 ------------------------------------
 Win11端口被占用的解决方法
 https://www.59xt.com/article/2291.html
+netstat -ano | findstr 5000
+taskkill -pid 7320 -f
 ---------------------------------------
 dotnet new webapi -o src/BiddingService
 dotnet sln add src/BiddingService
