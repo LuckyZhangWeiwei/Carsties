@@ -104,4 +104,5 @@ git merge dockercompose_release
 git push origin main
 -----------------------------------------
 docker network ls
-
+-----------------------------------------
+dotnet core 不能在静态类注入方法（DI）
