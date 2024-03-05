@@ -25,13 +25,17 @@ export default function SignalRProvider({ children, user }: Props) {
 
   const pathname = usePathname();
 
+  // nextjs bug 不能带入env.local中的值
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://api.carties.com/notifications"
+      : process.env.NEXT_PUBLIC_NOTIFY_URL;
+
   useEffect(() => {
-    const newConnection = new HubConnectionBuilder()
-      .withUrl(process.env.NEXT_PUBLIC_NOTIFY_URL!)
-      .build();
+    const newConnection = new HubConnectionBuilder().withUrl(apiUrl!).build();
 
     setConnection(newConnection);
-  }, []);
+  }, [apiUrl]);
 
   useEffect(() => {
     if (connection) {

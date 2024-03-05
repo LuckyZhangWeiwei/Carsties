@@ -83,9 +83,9 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker #hostingextension 中 34 行hardcode 了一个docker 环境， 还是找自己项目中的appsetting 文件，此行只是给了一个环境变量
       - ASPNETCORE_URLS=http://+:80
+      - ClientApp=http://app.carsties.com
       - ConnectionStrings__DefaultConnection=Server=postgres:5432;User Id=postgres;Password=postgrespw;Database=identity # 找自己项目的appsetting 中的配置
-    ports:
-      - 80:80
+      - VIRTUAL_HOST=id.carsties.com
     depends_on:
       - postgres
     networks:
@@ -99,8 +99,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
-    ports:
-      - 6001:80
+      - ClientApp=https://app.carsties.com
+      - VIRTUAL_HOST=api.carsties.com
     networks:
       custom:
   bid-svc:
@@ -144,16 +144,26 @@ services:
       dockerfile: frontend/web-app/Dockerfile
     volumes:
       - /var/lib/web/data
-    ports:
-      - 3000:3000
     extra_hosts:
       - id.carsties.com:10.5.0.200
     environment:
       - NEXTAUTH_SECRET=say_lalisa_love_me_lalisa_love_me_hey
-      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_URL=http://app.carsties.com
       - NEXTAUTH_URL_INTERNAL=http://web-app:3000
       - API_URL=http://gateway-svc
       - ID_URL=http://id.carsties.com
       - NEXT_PUBLIC_NOTIFY_URL=http://gateway-svc/notifications
+      - VIRTUAL_HOST=app.carsties.com
+      - VIRTUAL_PORT=3000
     networks:
       custom:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      custom:
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./devcerts:/etc/nginx/certs #copy 冒号前的路径到后面的路径

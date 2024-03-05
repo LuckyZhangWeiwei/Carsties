@@ -1,6 +1,5 @@
 import React from "react";
 import { UseControllerProps, useController } from "react-hook-form";
-import "react-datepicker/dist/react-datepicker.min.css";
 import Datepicker, { ReactDatePickerProps } from "react-datepicker";
 
 type Props = {
