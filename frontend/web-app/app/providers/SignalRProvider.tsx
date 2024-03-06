@@ -8,7 +8,6 @@ import { ReactNode, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import AuctionToaster from "../components/AuctionToaster";
 import { usePathname } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { getDetailedViewData } from "../actions/auctionActions";
 import AuctionFinishedToast from "../components/AuctionFinishedToast";
 
@@ -28,7 +27,7 @@ export default function SignalRProvider({ children, user }: Props) {
   // nextjs bug 不能带入env.local中的值
   const apiUrl =
     process.env.NODE_ENV === "production"
-      ? "https://api.carties.com/notifications"
+      ? "https://api.carsties.com/notifications"
       : process.env.NEXT_PUBLIC_NOTIFY_URL;
 
   useEffect(() => {
