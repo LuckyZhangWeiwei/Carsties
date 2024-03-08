@@ -31,7 +31,10 @@ export default function SignalRProvider({ children, user }: Props) {
       : process.env.NEXT_PUBLIC_NOTIFY_URL;
 
   useEffect(() => {
-    const newConnection = new HubConnectionBuilder().withUrl(apiUrl!).build();
+    const newConnection = new HubConnectionBuilder()
+      .withUrl(apiUrl!)
+      .withAutomaticReconnect()
+      .build();
 
     setConnection(newConnection);
   }, [apiUrl]);
@@ -83,10 +86,11 @@ export default function SignalRProvider({ children, user }: Props) {
             }
           );
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.log("==error==", error));
     }
 
     return () => {
+      console.log("==connection?.stop();==");
       connection?.stop();
     };
   }, [
