@@ -8,7 +8,6 @@ import { ReactNode, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import AuctionToaster from "../components/AuctionToaster";
 import { usePathname } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { getDetailedViewData } from "../actions/auctionActions";
 import AuctionFinishedToast from "../components/AuctionFinishedToast";
 
@@ -25,13 +24,20 @@ export default function SignalRProvider({ children, user }: Props) {
 
   const pathname = usePathname();
 
+  // nextjs bug 不能带入env.local中的值
+  const apiUrl =
+    process.env.NODE_ENV === "production"
+      ? "https://api.carsties.com/notifications"
+      : process.env.NEXT_PUBLIC_NOTIFY_URL;
+
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl(process.env.NEXT_PUBLIC_NOTIFY_URL!)
+      .withUrl(apiUrl!)
+      .withAutomaticReconnect()
       .build();
 
     setConnection(newConnection);
-  }, []);
+  }, [apiUrl, pathname]);
 
   useEffect(() => {
     if (connection) {
@@ -80,10 +86,11 @@ export default function SignalRProvider({ children, user }: Props) {
             }
           );
         })
-        .catch((error) => console.error(error));
+        .catch((error) => console.log("==error==", error));
     }
 
     return () => {
+      console.log("==connection?.stop();==");
       connection?.stop();
     };
   }, [

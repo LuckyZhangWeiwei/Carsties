@@ -22,6 +22,12 @@ builder.Services.AddMassTransit(x =>
     x.UsingRabbitMq(
         (context, cfg) =>
         {
+            cfg.UseMessageRetry(r =>
+            {
+                r.Handle<RabbitMqConnectionException>();
+                r.Interval(5, TimeSpan.FromSeconds(10));
+            });
+
             cfg.Host(
                 builder.Configuration["RabbitMq:Host"],
                 "/",
@@ -56,14 +62,10 @@ app.MapControllers();
 // 用这种方式可以避免 当auction 服务停止时，程序一直停在 DbInitializer.InitDb, 一直走不到 app.Run()
 app.Lifetime.ApplicationStarted.Register(async () =>
 {
-    try
-    {
-        await DbInitializer.InitDb(app);
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine(ex.Message);
-    }
+    await Policy
+        .Handle<TimeoutException>()
+        .WaitAndRetryAsync(5, retryAttempt => TimeSpan.FromSeconds(10))
+        .ExecuteAndCaptureAsync(async () => await DbInitializer.InitDb(app));
 });
 
 app.Run();
