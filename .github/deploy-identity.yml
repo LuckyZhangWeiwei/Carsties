@@ -3,32 +3,27 @@ name: deploy-identity
 on:
   workflow_dispatch:
   push:
-    branches: [ "k8s-local-release" ]
+    branches: [ "main" ]
     paths:
       - 'src/IdentityService/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - 
-        name: Checkout
-        uses: actions/checkout@v3
-    -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-    - 
-        name: Login to Docker hub
-        uses: docker/login-action@v2
-        with:
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    -
-        name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-            context: .
-            file: src/IdentityService/Dockerfile
-            push: true
-            tags: zhangweiwei1982/identity-svc:latest
+    - uses: actions/checkout@v3
+    - uses: docker/setup-buildx-action@v2
+    - name: Login to docker hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    - name: Build and push the Docker image
+      uses: docker/build-push-action@v3
+      with:
+        context: "{{defaultContext}}"
+        file: src/IdentityService/Dockerfile
+        push: true
+        tags: zhangweiwei1982/identity-svc:latest
+
+     
