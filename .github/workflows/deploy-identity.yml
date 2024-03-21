@@ -3,7 +3,7 @@ name: deploy-identity
 on:
   workflow_dispatch:
   push:
-    branches: [ "k8s-local-release" ]
+    branches: [ "main" ]
     paths:
       - 'src/IdentityService/**'
 
