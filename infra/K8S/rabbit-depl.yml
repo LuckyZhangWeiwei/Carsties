@@ -16,15 +16,15 @@ spec:
         image: rabbitmq:3-management-alpine
         env:
           - name: RABBITMQ_DEFAULT_USER
-            value: rabbit
+            value: guest
           - name: RABBITMQ_DEFAULT_PASS
-            value: rabbit
+            value: guest
         ports:
         - containerPort: 15672
-          name: rbmq-mqmt-port
+          name: rbmq-mgmt-port
         - containerPort: 5672
           name: rbmq-msg-port
-        volumeMounts:
+        volumeMounts: 
         - mountPath: /var/data/rabbit
           name: rabbitdata
       volumes:
@@ -32,7 +32,6 @@ spec:
           persistentVolumeClaim:
             claimName: rabbit-claim
 ---
-# inside ip
 apiVersion: v1
 kind: Service
 metadata:
@@ -44,18 +43,3 @@ spec:
   ports:
   - port: 5672
     targetPort: 5672
-
---- 
-# outsideip
-apiVersion: v1
-kind: Service
-metadata:
-  name: rabbit-lb
-spec:
-  type: LoadBalancer
-  selector:
-    app: rabbitmq
-  ports:
-  - port: 15672
-    targetPort: 15672
-

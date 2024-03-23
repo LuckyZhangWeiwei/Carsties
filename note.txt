@@ -118,3 +118,4 @@ kubectl describe pod postgres-fd54d9594-kgdjq
 kubectl get services
 
 kubectl apply -f rabbit-depl.yml
+kubectl apply -f auction-depl.yml
