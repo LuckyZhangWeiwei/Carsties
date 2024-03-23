@@ -109,3 +109,10 @@ docker network ls
 -----------------------------------------
 dotnet core 不能在静态类注入方法（DI）
 mkcert -key-file carsties.com.key -cert-file carsties.com.crt app.carsties.com api.carsties.com id.carsties.com
+----------------------------------------
+kubectl apply -f postgres-depl.yml
+kubectl apply -f local-pvc.yml
+kubectl get pods
+kubectl get deployments
+kubectl describe pod postgres-fd54d9594-kgdjq
+kubectl get services
