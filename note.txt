@@ -119,3 +119,8 @@ kubectl get services
 
 kubectl apply -f rabbit-depl.yml
 kubectl apply -f auction-depl.yml
+kubectl apply -f postgres-depl.yml
+kubectl apply -f search-depl.yml
+kubectl apply -f bid-depl.yml
+kubectl apply -f notifiy-depl.yml
+kubectl apply -f gateway-depl.yml

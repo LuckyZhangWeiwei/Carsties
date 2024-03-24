@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notify-svc
+spec:
+  selector:
+    matchLabels:
+      app: notify-svc
+  template:
+    metadata:
+      labels:
+        app: notify-svc
+    spec:
+      containers:
+        - name: notify-svc
+          image: zhangweiwei1982/notify-svc:latest
+          imagePullPolicy: Never
+          env:
+            - name: RabbitMq__Host
+              value: rabbit-clusterip
+            - name: RabbitMq__Username
+              value: guest
+            - name: RabbitMq__Password
+              value: guest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notify-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: notify-svc
+  ports:
+    - port: 80
+      targetPort: 80
