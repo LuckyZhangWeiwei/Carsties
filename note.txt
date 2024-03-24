@@ -124,3 +124,19 @@ kubectl apply -f search-depl.yml
 kubectl apply -f bid-depl.yml
 kubectl apply -f notifiy-depl.yml
 kubectl apply -f gateway-depl.yml
+kubectl apply -f webapp-depl.yml
+
+kubectl apply -f ingress-svc.yml
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/aws/deploy.yaml
+
+kubectl get namespaces 
+kubectl get services --namespace ingress-nginx
+
+(D:\dotnet\Carsties\infra\devcerts> ) mkcert -key-file server.key -cert-file server.crt app.carsties.com api.carsties.com 
+
+(PS D:\dotnet\Carsties\infra\devcerts>)  kubectl create secret tls carsties-app-tls  --key server.key --cert server.crt
+
+kubectl get secrets
+
+kubectl delete -f ingress-svc.yml
