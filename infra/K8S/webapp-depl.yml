@@ -18,8 +18,8 @@ spec:
         env:
           - name: NEXTAUTH_SECRET
             value: say_lalisa_love_me_lalisa_love_me_hey
-          - name: CLIENT_SECRET
-            value: secret
+          # - name: CLIENT_SECRET
+          #   value: secret
           - name: NEXTAUTH_URL
             value: https://app.carsties.com
           - name: API_URL
@@ -40,4 +40,17 @@ spec:
   ports:
   - port: 3000
     targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: webapp
+  ports:
+  - port: 3000
+    targetPort: 3000
+
 
