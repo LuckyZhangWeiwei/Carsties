@@ -1,4 +1,5 @@
 using Duende.IdentityServer;
+using Duende.IdentityServer.Services;
 using IdentityService.Data;
 using IdentityService.Models;
 using Microsoft.AspNetCore.Identity;
@@ -31,7 +32,7 @@ internal static class HostingExtensions
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
 
-                if(builder.Environment.IsEnvironment("Docker"))
+                if (builder.Environment.IsEnvironment("Docker"))
                 {
                     options.IssuerUri = "identity-svc";
                 }
@@ -66,6 +67,19 @@ internal static class HostingExtensions
 
         app.UseStaticFiles();
         app.UseRouting();
+
+        if (app.Environment.IsProduction())
+        {
+            app.Use(
+                async (ctx, next) =>
+                {
+                    var serverUrls = ctx.RequestServices.GetRequiredService<IServerUrls>();
+                    serverUrls.Origin = serverUrls.Origin = "https://id.wwzww.xyz";
+                    await next();
+                }
+            );
+        }
+        
         app.UseIdentityServer();
         app.UseAuthorization();
 
