@@ -140,3 +140,7 @@ kubectl get services --namespace ingress-nginx
 kubectl get secrets
 
 kubectl delete -f ingress-svc.yml
+------------------------------------------
+kubectl create secret generic postgres-password --from-literal=postgrespwkey=postgrespw
+kubectl get secrets
+kubectl delete secret postgres-password    
