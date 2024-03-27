@@ -17,7 +17,15 @@ spec:
           imagePullPolicy: Never
           env:
             - name: NEXTAUTH_SECRET
-              value: say_lalisa_love_me_lalisa_love_me_hey
+              valueFrom:
+                secretKeyRef:
+                  name: webapp-secret
+                  key: authSecret
+            - name: CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: webapp-secret
+                  key: clientSecret
             - name: NEXTAUTH_URL
               value: https://app.carsties.com
             - name: API_URL
@@ -36,5 +44,5 @@ spec:
   selector:
     app: webapp
   ports:
-  - port: 3000
-    targetPort: 3000
+    - port: 3000
+      targetPort: 3000
