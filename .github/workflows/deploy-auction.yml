@@ -8,7 +8,7 @@ on:
       - 'src/AuctionService/**'
 
 env:
-  REGISTRY_IMAGE: trycatchlearn/auction-svc
+  REGISTRY_IMAGE: zhangweiwei1982/auction-svc
   DOCKERFILE: src/AuctionService/Dockerfile
   DEPLOYMENT_NAME: auction-svc
 

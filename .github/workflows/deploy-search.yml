@@ -8,7 +8,7 @@ on:
       - 'src/SearchService/**'
 
 env:
-  REGISTRY_IMAGE: trycatchlearn/search-svc
+  REGISTRY_IMAGE: zhangweiwei1982/search-svc
   DOCKERFILE: src/SearchService/Dockerfile
   DEPLOYMENT_NAME: search-svc
 

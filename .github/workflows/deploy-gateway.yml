@@ -8,7 +8,7 @@ on:
       - 'src/GatewayService/**'
 
 env:
-  REGISTRY_IMAGE: trycatchlearn/gateway-svc
+  REGISTRY_IMAGE: zhangweiwei1982/gateway-svc
   DOCKERFILE: src/GatewayService/Dockerfile
   DEPLOYMENT_NAME: gateway-svc
 

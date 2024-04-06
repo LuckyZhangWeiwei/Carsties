@@ -8,7 +8,7 @@ on:
       - 'frontend/web-app/**'
 
 env:
-  REGISTRY_IMAGE: trycatchlearn/web-app
+  REGISTRY_IMAGE: zhangweiwei1982/web-app
   DOCKERFILE: frontend/web-app/Dockerfile
   DEPLOYMENT_NAME: webapp
 

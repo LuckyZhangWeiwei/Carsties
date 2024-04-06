@@ -34,7 +34,7 @@ services:
     networks:
       custom:
   auction-svc:
-    image: trycatchlearn/auction-svc:latest
+    image: zhangweiwei1982/auction-svc:latest
     build: 
       context: .
       dockerfile: src/AuctionService/Dockerfile
@@ -58,7 +58,7 @@ services:
     networks:
       custom:
   search-svc:
-    image: trycatchlearn/search-svc:latest
+    image: zhangweiwei1982/search-svc:latest
     build: 
       context: .
       dockerfile: src/SearchService/Dockerfile
@@ -76,7 +76,7 @@ services:
     networks:
       custom:
   identity-svc:
-    image: trycatchlearn/identity-svc:latest
+    image: zhangweiwei1982/identity-svc:latest
     build: 
       context: .
       dockerfile: src/IdentityService/Dockerfile
@@ -92,7 +92,7 @@ services:
       custom:
         ipv4_address: 10.5.0.200
   gateway-svc:
-    image: trycatchlearn/gateway-svc:latest
+    image: zhangweiwei1982/gateway-svc:latest
     build: 
       context: .
       dockerfile: src/GatewayService/Dockerfile
@@ -104,7 +104,7 @@ services:
     networks:
       custom:
   bid-svc:
-    image: trycatchlearn/bid-svc:latest
+    image: zhangweiwei1982/bid-svc:latest
     build: 
       context: .
       dockerfile: src/BiddingService/Dockerfile
@@ -123,7 +123,7 @@ services:
     networks:
       custom:
   notify-svc:
-    image: trycatchlearn/notify-svc:latest
+    image: zhangweiwei1982/notify-svc:latest
     build: 
       context: .
       dockerfile: src/NotificationService/Dockerfile
@@ -138,7 +138,7 @@ services:
     networks:
       custom:
   web-app:
-    image: trycatchlearn/web-app
+    image: zhangweiwei1982/web-app
     build: 
       context: .
       dockerfile: frontend/web-app/Dockerfile

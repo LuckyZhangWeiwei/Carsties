@@ -8,7 +8,7 @@ on:
       - 'src/NotificationService/**'
 
 env:
-  REGISTRY_IMAGE: trycatchlearn/notify-svc
+  REGISTRY_IMAGE: zhangweiwei1982/notify-svc
   DOCKERFILE: src/NotificationService/Dockerfile
   DEPLOYMENT_NAME: notify-svc
 

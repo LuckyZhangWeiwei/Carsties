@@ -24,5 +24,5 @@ jobs:
         context: "{{defaultContext}}"
         file: src/IdentityService/Dockerfile
         push: true
-        tags: trycatchlearn/identity-svc:latest
+        tags: zhangweiwei1982/identity-svc:latest
      

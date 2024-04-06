@@ -7,6 +7,7 @@ import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr'
 import { User } from 'next-auth';
 import React, { ReactNode, useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast';
+import { usePathname } from "next/navigation";
 import AuctionCreatedToast from '../components/AuctionCreatedToast';
 import { getDetailedViewData } from '../actions/auctionActions';
 import AuctionFinishedToast from '../components/AuctionFinishedToast';
@@ -20,8 +21,12 @@ export default function SignalRProvider({ children, user }: Props) {
     const [connection, setConnection] = useState<HubConnection | null>(null);
     const setCurrentPrice = useAuctionStore(state => state.setCurrentPrice);
     const addBid = useBidStore(state => state.addBid);
+
+
+    const pathname = usePathname();
+
     const apiUrl = process.env.NODE_ENV === 'production' 
-        ? 'https://api.carsties.store/notifications'
+        ? 'https://api.carsties.com/notifications'
         : process.env.NEXT_PUBLIC_NOTIFY_URL
 
     useEffect(() => {
@@ -31,7 +36,7 @@ export default function SignalRProvider({ children, user }: Props) {
             .build();
 
         setConnection(newConnection);
-    }, [apiUrl]);
+    }, [apiUrl, pathname]);
 
     useEffect(() => {
         if (connection) {
