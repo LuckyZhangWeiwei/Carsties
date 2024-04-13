@@ -14,7 +14,7 @@ spec:
       containers:
         - name: search-svc
           image: zhangweiwei1982/search-svc
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           env:
             - name: RabbitMq__Host
               value: rabbit-clusterip
