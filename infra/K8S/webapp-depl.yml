@@ -31,7 +31,7 @@ spec:
             - name: API_URL
               value: http://gateway-clusterip/
             - name: ID_URL
-              value: https://id.wwzww.xyz
+              value: https://id.wwzww.xyz/
           ports:
             - containerPort: 3000
 ---
