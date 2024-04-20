@@ -150,6 +150,7 @@ services:
       - NEXTAUTH_SECRET=somethingreallyreallysecret
       - NEXTAUTH_URL=http://app.carsties.com
       - NEXTAUTH_URL_INTERNAL=http://web-app:3000
+      - CLIENT_SECRET=secret
       - API_URL=http://gateway-svc/
       - ID_URL=http://id.carsties.com
       - NEXT_PUBLIC_NOTIFY_URL=http://gateway-svc/notifications
